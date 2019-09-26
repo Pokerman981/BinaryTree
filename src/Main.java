@@ -5,18 +5,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-    BinaryTree binaryTree = new BinaryTree().createBinaryTree();
-    System.out.println("Bruh");
+        BinaryTree binaryTree = new BinaryTree().createBinaryTree();
+        int num = binaryTree.search(binaryTree.root, 8) == null ? -1 : binaryTree.search(binaryTree.root, 8).value;
+        if (num == -1) {
+            System.out.println("This number isn't in the binary tree! " + num);
+        } else {
+            System.out.println("This number is in the binary tree! " + num);
+        }
     }
-
-
-
-
 
 }
 
 class BinaryTree {
     Node root;
+
+    public Node search(Node root, int value) {
+        if (root == null || root.value == value) return root;
+        if (root.value > value) return search(root.right, value);
+
+        return search(root.right, value);
+    }
 
     private Node addRecursive(Node current, int value) {
         if (current == null) return new Node(value);
