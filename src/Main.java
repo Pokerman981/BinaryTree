@@ -1,5 +1,6 @@
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Main {
 
@@ -41,15 +42,12 @@ class BinaryTree {
     }
 
     public static BinaryTree createBinaryTree() {
+        Random random = new Random();
         BinaryTree bt = new BinaryTree();
 
-        bt.add(6);
-        bt.add(4);
-        bt.add(8);
-        bt.add(3);
-        bt.add(5);
-        bt.add(7);
-        bt.add(9);
+        for (int i = 0; i < 10; i++) {
+            bt.add(random.nextInt(20));
+        }
 
         return bt;
     }
